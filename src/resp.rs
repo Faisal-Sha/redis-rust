@@ -22,6 +22,26 @@ pub fn deserialize(chars: &mut Peekable<Chars>) -> Result<RespType, String> {
     }
 }
 
+// In resp.rs
+
+pub fn serialize(resp: &RespType) -> Result<String, String> {
+    match resp {
+        RespType::SimpleString(s) => Ok(format!("+{}\r\n", s)),
+        RespType::Error(s) => Ok(format!("-{}\r\n", s)),
+        RespType::Integer(i) => Ok(format!(":{}\r\n", i)),
+        RespType::BulkString(s) => Ok(format!("${}\r\n{}\r\n", s.len(), s)),
+        RespType::Null => Ok("$-1\r\n".to_string()),
+        RespType::Array(arr) => {
+            let mut result = format!("*{}\r\n", arr.len());
+            for item in arr {
+                result.push_str(&serialize(item)?);
+            }
+            Ok(result)
+        },
+    }
+}
+
+
 fn parse_simple_string(chars: &mut Peekable<Chars>) -> Result<RespType, String> {
     chars.next(); // Consume '+'
     let line = parse_line(chars)?;
