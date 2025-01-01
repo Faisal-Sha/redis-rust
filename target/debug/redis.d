@@ -1,1 +1,1 @@
-/home/faisal/projects/open-source/coding-challenges/redis-rust/target/debug/redis: /home/faisal/projects/open-source/coding-challenges/redis-rust/src/main.rs /home/faisal/projects/open-source/coding-challenges/redis-rust/src/resp.rs
+/home/faisal/projects/open-source/coding-challenges/redis-rust/target/debug/redis: /home/faisal/projects/open-source/coding-challenges/redis-rust/src/main.rs
