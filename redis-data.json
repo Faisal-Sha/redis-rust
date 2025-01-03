@@ -1,0 +1,1 @@
+[["counter",{"data":{"Integer":11},"expiry":null}],["persistkey",{"data":{"String":"test persistence"},"expiry":null}],["mylist",{"data":{"List":["second","first","last"]},"expiry":null}]]
